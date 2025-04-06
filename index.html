@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Parallax Image</title>
+    <style>
+        body {
+            margin: 0;
+            overflow: hidden;
+        }
+        .parallax-container {
+            position: relative;
+            width: 100vw;
+            height: 100vh;
+            background: url('your-image.jpg') no-repeat center center;
+            background-size: cover;
+            transform: translate3d(0, 0, 0);
+        }
+    </style>
+</head>
+<body>
+
+    <div class="parallax-container" id="parallax"></div>
+
+    <script>
+        window.addEventListener("deviceorientation", function(event) {
+            let x = event.gamma;
+            let y = event.beta;
+
+            let moveX = x * 0.5;
+            let moveY = y * 0.5;
+
+            document.getElementById("parallax").style.transform = `translate(${moveX}px, ${moveY}px)`;
+        });
+    </script>
+
+</body>
+</html>
